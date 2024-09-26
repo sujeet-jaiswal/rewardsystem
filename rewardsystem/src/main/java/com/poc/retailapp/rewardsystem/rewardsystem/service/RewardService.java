@@ -105,19 +105,7 @@ public class RewardService {
     return response;
   }
 
-  /**
-   * Calculate rewards for all customers
-   * @param months
-   * @return
-   */
-  public List<CustomerRewardResponse> getAllCustomerRewards(int months) throws RewardServiceException
-   {
-    List<Customer> customers = customerRepository.findAll();
-   
-    return customers.stream()
-            .map(customer -> getCustomerRewards(customer.getId(), months))
-            .toList();
-  }
+  
 
   /**
    * Handle and process single transaction for a customer Id
