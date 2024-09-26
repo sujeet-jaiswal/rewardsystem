@@ -18,11 +18,7 @@ import com.poc.retailapp.rewardsystem.rewardsystem.service.RewardService;
 public class Controller {
   @Autowired private RewardService rewardService;
 
-@GetMapping("test")
-public String getTest()
-{
-  return "Test";
-}
+
 
   /**
    * Get rewards for a customer
@@ -46,24 +42,7 @@ public String getTest()
     return ResponseEntity.ok(response);
   }
 
-  /**
-   * Get rewards for all customers
-   * @param months
-   * @return
-   * @throws RewardServiceException 
-   */
-  @GetMapping("reward")
-  public ResponseEntity<List<CustomerRewardResponse>> getRewardsAllCustomers(@RequestParam(value = "months", defaultValue = "3") int months) throws RewardServiceException{
-    if (months < 1 || months > 12) {
-      try {
-        throw new RewardServiceException("Invalid months. Months must be between 1 and 12.");
-      } catch (RewardServiceException e) {
-       
-        e.printStackTrace();
-      }
-    }
-    return ResponseEntity.ok(rewardService.getAllCustomerRewards(months));
-  }
+  
 
   /**
    * Process a single transaction
